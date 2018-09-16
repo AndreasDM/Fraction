@@ -3,9 +3,9 @@ using System;
 class Fraction {
   private int _denominator;
   public int nominator   { get; set; }
-  public int denominator { 
+  public int denominator {
     set {
-      if (value == 0) throw new ArgumentException("denominator cannot be zero!"); 
+      if (value == 0) throw new ArgumentException("denominator cannot be zero!");
       this._denominator = value;
     }
     get { return this._denominator; }
@@ -21,7 +21,7 @@ class Fraction {
 
   public static Fraction reduce(int a, int b) {
     int n = gcd(a, b);
-    return new Fraction(a/=n, b/=n); 
+    return new Fraction(a/=n, b/=n);
   }
 
   public override string ToString() {
@@ -61,7 +61,7 @@ class Fraction {
     Fraction y = reduce(b.nominator, b.denominator);
     if (((a.nominator / a.denominator) < (b.nominator / b.denominator)) || x == y)
       return true;
-    else 
+    else
       return false;
   }
 
@@ -86,8 +86,8 @@ class Fraction {
   public static Fraction operator-(Fraction a, Fraction b) {
     int an = a.nominator, ad = a.denominator, bn = b.nominator, bd = b.denominator;
     if (ad == bd) {
-      return new Fraction(an-bn, ad); 
-    } 
+      return new Fraction(an-bn, ad);
+    }
 
     return reduce((an*bd)-(bn*ad), ad*bd);
   }
@@ -102,14 +102,14 @@ class Fraction {
     return reduce(x*y1, y*x1);
   }
 
-  public static implicit operator double(Fraction x) { 
-    return ((double)x.nominator / x.denominator); 
+  public static implicit operator double(Fraction x) {
+    return ((double)x.nominator / x.denominator);
   }
 
   public static void Main(string[] args) {
     Fraction a = new Fraction(2,3);
     Fraction b = new Fraction(6,7);
-    
+
     Console.WriteLine(a + " + " + b + " = " + (a+b));
   }
 }
